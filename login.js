@@ -27,6 +27,7 @@ loginForm.addEventListener("submit", async (event) => {
   // Опции запроса
   const options = {
     method: "POST",
+    credentials:'include',
     headers: {
       "Content-Type": "application/json",
       // Другие необходимые заголовки могут быть добавлены здесь
