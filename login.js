@@ -28,10 +28,10 @@ loginForm.addEventListener("submit", async (event) => {
   const options = {
      
     method: "POST",
-  
+   withCredentials: true,
     headers: {
       "Content-Type": "application/json",
-      // Другие необходимые заголовки могут быть добавлены здесь
+     
     },
     body: JSON.stringify(data),
   };
