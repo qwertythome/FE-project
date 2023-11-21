@@ -28,16 +28,18 @@ loginForm.addEventListener("submit", async (event) => {
   const options = {
      
     method: "POST",
-   withCredentials: true,
+   
     headers: {
       "Content-Type": "application/json",
      
     },
-    body: JSON.stringify(data),
+   
+    body: JSON.stringify(data), 
+    credentials: 'include'
   };
 
   // Отправляем запрос на сервер
-  fetch("https://project-49di.onrender.com/auth/login", options)
+  fetch("http://localhost:3000/auth/login", options)
     .then((response) => {
       // Обрабатываем ответ от сервера
       if (!response.ok) {
