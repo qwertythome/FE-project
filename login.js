@@ -35,9 +35,10 @@ loginForm.addEventListener("submit", async (event) => {
     },
    
     body: JSON.stringify(data), 
-    credentials: 'include'
+    credentials: 'same-origin',
+    withCredentials: true
   };
-
+  
   // Отправляем запрос на сервер
   fetch("http://localhost:3000/auth/login", options)
     .then((response) => {
@@ -48,22 +49,8 @@ loginForm.addEventListener("submit", async (event) => {
       return response.json();
     })
     .then((data) => {
-      // Обработка ответа от сервера
-      if (data && data.redirect) {
-        console.log("Redirecting to:", data.redirect);
-        // Дополнительные действия, если нужно
-      } else {
-        console.error("Unexpected server response:", data);
-      }
-
-      const cookies = data.cookies;
-      if (cookies) {
-        for (const cookie of cookies) {
-          document.cookie = cookie;
-        }
-      }
-
-      console.log("OK");
+      
+      console.log(data);
     })
     .catch((error) => {
       // Обработка ошибок
