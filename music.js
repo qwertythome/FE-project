@@ -45,12 +45,13 @@ function getsongs() {
     playButtons.forEach((button) => {
         button.addEventListener('click', function (event) {
             id = event.target.id;
-            fetch('http://localhost:3000/auth/music',{
+            fetch('https://project-49di.onrender.com/auth/music',{
               method: 'POST',
               headers: {
                   'Content-Type': 'application/json',
               },
               body: JSON.stringify({ id: id }),
+              
           }).then(res=> res.json()).then((data)=>{
             console.log(data)
             bildmusic(data)
@@ -60,6 +61,8 @@ function getsongs() {
     });
  
 } 
+
+
 function bildmusic(music){
   audioData=music.music.data.data
   
@@ -81,7 +84,7 @@ function getautor() {
     const autor = url.get('token');
     console.log(autor);
 
-    fetch('http://localhost:3000/auth/getsongs', {
+    fetch('https://project-49di.onrender.com/auth/getsongs', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -98,10 +101,11 @@ function getautor() {
             return response.json();
         })
         .then((data) => {
+          console.log(data);
             loader();
             bildautor(data);
             bildplaylist(data);
-            console.log(data);
+            
         })
         .catch((error) => {
             // Handle any errors that occurred during the fetch
