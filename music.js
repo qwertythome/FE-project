@@ -2,6 +2,7 @@ const body = document.body;
 const loade = document.querySelector('.loader');
 const autorbody = document.querySelector('.autorbody');
 const musiclistdiv = document.querySelector('.musiclist');
+const name_Song=document.querySelector('.name_Song')
 function loader() {
     loade.classList.remove('loader');
     body.style.backgroundColor = 'white';
@@ -68,7 +69,7 @@ function bildmusic(music){
 
 
 const audioUrl = URL.createObjectURL(blob);
-
+name_Song.innerHTML=`${music.songs.songs}`
 console.log(audioUrl)
 document.getElementById('audio').src = audioUrl
 }
