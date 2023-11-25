@@ -1,3 +1,6 @@
+*{
+    margin: 0;
+}
 .loader {
     width: 48px;
     height: 48px;
@@ -17,13 +20,45 @@
         transform: rotate(360deg);
     }
 }
+
 body {
     background: black;
-    width: 100vh;
+    
     height: 100vh;
 }
 .musicli{
     
     display: flex;
     flex-direction: row;
+}
+.body{
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns:20% 80% ;
+    grid-template-rows:10% 75%;
+    grid-template-areas: 
+    " c e"
+    " c  b"
+    " a  a"
+    ;
+
+
+}
+
+.musicplay{
+    grid-area: a;
+    background: rgb(204, 0, 255);
+}
+.bodylist{
+    grid-area: b;
+    
+}
+.menu{
+    grid-area:c;
+    background: red;
+}
+.search{
+    grid-area:e;
+    background: rgb(94, 255, 0);
 }
