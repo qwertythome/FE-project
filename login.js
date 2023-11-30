@@ -40,7 +40,7 @@ loginForm.addEventListener("submit", async (event) => {
   };
   
   // Отправляем запрос на сервер
-  fetch("http://localhost:3000/auth/login", options)
+  fetch("https://project-49di.onrender.com/auth/login", options)
     .then((response) => {
       // Обрабатываем ответ от сервера
       if (!response.ok) {
