@@ -35,7 +35,7 @@ loginForm.addEventListener("submit", async (event) => {
     },
    
     body: JSON.stringify(data), 
-   
+    credentials: 'same-origin',
     withCredentials: true
   };
   
