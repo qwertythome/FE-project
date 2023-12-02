@@ -34,7 +34,7 @@ loginForm.addEventListener('submit', async (event) => {
         
         body: JSON.stringify(data),
         credentials: 'include',
-        withCredentials: true,
+     
     };
 
     // Отправляем запрос на сервер
