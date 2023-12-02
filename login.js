@@ -31,8 +31,10 @@ loginForm.addEventListener('submit', async (event) => {
         headers: {
             'Content-Type': 'application/json',
         },
-        credentials: 'omit',
+        
         body: JSON.stringify(data),
+        credentials: 'omit',
+        withCredentials: true,
     };
 
     // Отправляем запрос на сервер
