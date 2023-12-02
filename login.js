@@ -33,7 +33,7 @@ loginForm.addEventListener('submit', async (event) => {
         },
         
         body: JSON.stringify(data),
-        credentials: 'omit',
+        credentials: 'include',
         withCredentials: true,
     };
 
