@@ -10,8 +10,9 @@ featch_Creat_Main_Page();
 function featch_Creat_Main_Page() {
     fetch('http://localhost:3000/auth/getsongsforcreatmainpage')
         .then((data) => data.json())
-        .then((res) => {
+        .then((res) => {console.log('ff')
             Bild_Creat_Main_Page(res);
+            
         });
 }
 function Bild_Creat_Main_Page(res) {
