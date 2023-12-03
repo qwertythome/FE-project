@@ -159,3 +159,54 @@ line-height: normal;
     box-shadow: 0px 10px 0px rgb(0, 0, 0,0.3);
     transition-duration: 0.5s;
 }
+.mainPage_Autor_Card_Img{
+    width: 168px;
+height: 180px;
+flex-shrink: 0;
+}
+.mainPage_autor_Div{
+    width: 90%;
+    height: 278px;
+    flex-shrink: 0;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows:29% 71% ;
+    background: linear-gradient(180deg, #45063B 0%, rgba(69, 6, 59, 0.00) 100%);
+
+backdrop-filter: blur(2px);
+
+}
+.mainPage_Autor_Div_For_card{
+    
+    width: 100%;
+    display: grid;
+    grid-template-columns: 3% 16% 3% 16% 3% 16% 3% 16% 3% 16%;
+}
+.mainPage_Autor_Card_Img_Button{
+    position: relative;
+    background: none;
+    border: 0;
+}
+.mainPage_Autor_Card_Autor_Name{
+    margin: -50px;
+    color:none;
+
+font-family: Inter;
+font-size: 175%;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+opacity: 0;
+
+}
+
+.mainPage_Autor_Card_Img_Button:hover button{
+    background-color:rgba(0,0,0,.3);
+   position:relative;
+    
+   
+}
+.mainPage_Autor_Card_Img_Button:hover h1{
+    opacity: 1;
+    color: #FFC7C7;
+}
