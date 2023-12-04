@@ -29,7 +29,8 @@ function Bild_Creat_Main_Page(res) {
 
 
 }
-console.log(buttons_Switches);
+
+
 function Creat_autor_Card(arry){
     arry.autor.forEach((autor) => {
         const mainPage_Autor_Div_For_card= document.querySelector('.mainPage_Autor_Div_For_card')
@@ -40,10 +41,22 @@ function Creat_autor_Card(arry){
         console.log(autor);
         mainPage_Autor_Div_For_card.innerHTML += `<div>
         </div><div class="mainPage_autor_card">
-<button class="mainPage_Autor_Card_Img_Button"><div class='mainPage_Autor_Img_Order_Div'></div><img class="mainPage_Autor_Card_Img" src="${img}" alt="">
+<button class="mainPage_Autor_Card_Img_Button"id='autor_${autor.autor}'><div class='mainPage_Autor_Img_Order_Div' id='autor_${autor.autor}'></div><img class="mainPage_Autor_Card_Img" src="${img}" alt="">
 <h1 class="mainPage_Autor_Card_Autor_Name">${autor.autor}</h1>
 </button>
 
 </div>`;
     });
+
+const mainPage_autor_card=document.querySelectorAll('.mainPage_autor_card')
+mainPage_Transition_Autor_Card_Click(mainPage_autor_card)
+}
+function  mainPage_Transition_Autor_Card_Click(event){
+    event.forEach((button) => {
+        button.addEventListener('click', (e) => {
+            const clickedId = e.target.id;
+            console.log(clickedId)
+        });
+    });
+
 }

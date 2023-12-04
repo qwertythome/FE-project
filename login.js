@@ -1,8 +1,12 @@
 const loginForm = document.getElementById('loginForm');
-
+function creatTime(){
+    const now = new Date();
+    const date= now.getDate()+1+'.'+now.getHours()
+    return date
+}
 loginForm.addEventListener('submit', async (event) => {
     event.preventDefault();
-    // Получаем значения электронной почты и пароля из формы
+ 
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
@@ -38,24 +42,15 @@ loginForm.addEventListener('submit', async (event) => {
     };
 
     // Отправляем запрос на сервер
-    fetch('https://project-49di.onrender.com/auth/login', options)
-        .then((response) => {
-            // Обрабатываем ответ от сервера
-            if (!response.ok) {
-                throw new Error(
-                    `Network response was not ok: ${response.status}`
-                );
-            }
-            return response.json();
-        })
-        .then((data) => {
-            console.log(data);
-        })
-        .catch((error) => {
-            // Обработка ошибок
-            console.error(
-                'There has been a problem with your fetch operation:',
-                error
-            );
-        });
+    fetch('http://localhost:3000/auth/login', options)
+    .then(response => response.json())
+    .then(data => {
+      localStorage.setItem('token',data.token)
+      
+     localStorage.setItem('time',creatTime() );
+     if( localStorage.getItem('token')>=0){
+
+     }
+    })
+  
 });
