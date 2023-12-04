@@ -8,7 +8,7 @@ buttons_Switches.forEach((button) => {
 
 featch_Creat_Main_Page();
 function featch_Creat_Main_Page() {
-    fetch('http://localhost:3000/auth/getsongsforcreatmainpage')
+    fetch('https://project-49di.onrender.com/auth/getsongsforcreatmainpage')
         .then((data) => data.json())
         .then((res) => {console.log('ff')
             Bild_Creat_Main_Page(res);
@@ -23,27 +23,27 @@ function Bild_Creat_Main_Page(res) {
     const mainPage_autor_Div = document.querySelector('.mainPage_autor_Div');
     mainPage_autor_Div.innerHTML=`<h1 class="mainPage_Autor_title">Автори</h1>
     <div class='mainPage_Autor_Div_For_card'>  </div>`
-    const mainPage_Autor_Div_For_card= document.querySelector('.mainPage_Autor_Div_For_card')
-    arry.autor.forEach((autor) => {
-        const Buffer_img = autor.img.data.data;
-        const blob = new Blob([new Uint8Array(Buffer_img)], {
-            type: 'image/jpeg',
-        });
-
-        const imgUrl = URL.createObjectURL(blob);
-        console.log(imgUrl);
-        console.log(autor);
-        mainPage_Autor_Div_For_card.innerHTML += `<div>
-        </div><div class="mainPage_autor_card">
-<button class="mainPage_Autor_Card_Img_Button"><img class="mainPage_Autor_Card_Img" src="${imgUrl}" alt="">
-<h1 class="mainPage_Autor_Card_Autor_Name">${autor.autor}</h1>
-</button>
-
-</div>
-`;
-    });
+    
+    Creat_autor_Card(arry)
 
 
 
 }
 console.log(buttons_Switches);
+function Creat_autor_Card(arry){
+    arry.autor.forEach((autor) => {
+        const mainPage_Autor_Div_For_card= document.querySelector('.mainPage_Autor_Div_For_card')
+        const img = autor.img
+       
+
+        
+        console.log(autor);
+        mainPage_Autor_Div_For_card.innerHTML += `<div>
+        </div><div class="mainPage_autor_card">
+<button class="mainPage_Autor_Card_Img_Button"><div class='mainPage_Autor_Img_Order_Div'></div><img class="mainPage_Autor_Card_Img" src="${img}" alt="">
+<h1 class="mainPage_Autor_Card_Autor_Name">${autor.autor}</h1>
+</button>
+
+</div>`;
+    });
+}

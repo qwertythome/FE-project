@@ -200,13 +200,21 @@ opacity: 0;
 
 }
 
-.mainPage_Autor_Card_Img_Button:hover button{
-    background-color:rgba(0,0,0,.3);
-   position:relative;
-    
-   
-}
+
 .mainPage_Autor_Card_Img_Button:hover h1{
+    margin-left: 30%;
+    position: absolute;
+    
     opacity: 1;
     color: #FFC7C7;
+}
+.mainPage_Autor_Card_Img_Button:hover div{
+    position: absolute;
+    width: 168px;
+    height: 180px;
+    
+    background: rgba(69, 6, 59, 0.50);
+}
+.mainPage_Autor_Img_Order_Div{
+ 
 }
