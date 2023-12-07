@@ -3,6 +3,7 @@ const loade = document.querySelector('.loader');
 const autorbody = document.querySelector('.autorbody');
 const musiclistdiv = document.querySelector('.musiclist');
 const name_Song=document.querySelector('.name_Song')
+const menu_Img=document.querySelector('.menu_img')
 function loader() {
     loade.classList.remove('loader');
     body.style.backgroundColor = 'white';

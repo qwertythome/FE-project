@@ -119,13 +119,16 @@ body {
     flex-shrink: 0;
 }
 .play_Music {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 10% 30%;
     background: linear-gradient(
         180deg,
         rgba(0, 0, 0, 0.31) 130.68%,
         rgba(217, 217, 217, 0) 130.69%
     );
 }
-.img_play_music {
+.img_Play_Music {
     height: 49px;
     flex-shrink: 0;
 }
@@ -347,6 +350,7 @@ body {
     background: rgba(138, 51, 51, 0.3);
 }
 .autorPage_Div_Music_Content_MusicLIst {
+    flex-direction: column;
     display: flex;
     width: 100%;
 }
@@ -405,30 +409,36 @@ body {
     margin-top: 2%;
     margin-left: 5%;
 }
-.autorPage_Div_Music_Play_Like_Button{
+.autorPage_Div_Music_Play_Like_Button {
     border: 0;
     background: none;
 }
-.autorPage_Div_Music_Play_Like{
+.autorPage_Div_Music_Play_Like {
     width: 31.33px;
-height: 29px;
-flex-shrink: 0;
+    height: 29px;
+    flex-shrink: 0;
 }
-.autorPage_Div_Music_Play_Like_Num{
-    color: #FFC7C7;
-margin-top: -10%;
-font-family: Inter;
-font-size: 200%;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-width: 91.695px;
-height: 63px;
-flex-shrink: 0;
+.autorPage_Div_Music_Play_Like_Num {
+    color: #ffc7c7;
+    margin-top: -10%;
+    font-family: Inter;
+    font-size: 200%;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 91.695px;
+    height: 63px;
+    flex-shrink: 0;
 }
-.autorPage_Div_Music_Play_Like_Div{
+.autorPage_Div_Music_Play_Like_Div {
     display: grid;
     grid-template-rows: 25% 10%;
     grid-template-columns: 20% 40%;
+}
 
+.range_Audio {
+    width: 280%;
+    transform: rotate(90deg);
+    margin-left: -90%;
+    margin-top: 170%;
 }

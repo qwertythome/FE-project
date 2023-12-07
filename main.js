@@ -1,5 +1,7 @@
 const buttons_Switches = document.querySelectorAll('.menu_item');
 const main_Canvas = document.querySelector('.main');
+const range_Audio=document.querySelector('.range_Audio')
+const img_Play_Music=document.querySelector('.img_Play_Music')
 function delete_QueryParam() {
     let currentUrl = window.location.href;
 
@@ -24,9 +26,30 @@ function create_QueryParam(queryParam, PagequeryParam) {
 
     history.pushState({}, '', newUrl.toString());
 }
+function autorPage_Check_Authorization(function_True){
+    const time= localStorage.getItem('time');
+console.log(now_Time())
+    if (time - now_Time() >= 0) {
+        console.log('faf')
+        function_True();
+        
+    } else {
+        console.log('aaa');
+    }
+}
 function creatTime() {
     const now = new Date();
-    const date = now.getDate() + 1 + '.' + now.getHours();
+    const date = now.getDate() +1 + '.' + now.getHours();
+    return date;
+}
+function now_Time() {
+    const now = new Date();
+    let hour=now.getHours()
+    if( now.getHours().length<=10){
+        hour='0'+now.getHours()
+        console.log(hour)
+    }
+    const date = now.getDate()  + '.' + hour;
     return date;
 }
 buttons_Switches.forEach((button) => {
@@ -105,7 +128,7 @@ function mainPage_Transition_Autor_Card_Click(event) {
         });
     });
 }
-
+const audio = document.querySelector('.audioPlayer');
 function autor() {
     const urlkey = window.location.search;
 
@@ -130,12 +153,22 @@ function autor() {
         .then((data) => {
             featch_autorPage_Create_Autor(data);
         });
+        fetch_Get_Songs_For_Autor()
+        
+}
+function fetch_Get_Songs_For_Autor(){
+    const urlkey = window.location.search;
+    const token=localStorage.getItem('token')
+
+    const url = new URLSearchParams(urlkey);
+   
+    const autor = url.get('param');
     fetch('https://project-49di.onrender.com/auth/getsongsforautor', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ autor: autor }),
+        body: JSON.stringify({ autor: autor, token:token }),
     })
         .then((response) => {
             // Handle the response from the server
@@ -143,11 +176,11 @@ function autor() {
             return response.json();
         })
         .then((data) => {
-            
+            console.log(data)
             featch_autorPage_Create_MusicPlayer(data);
-        });
-}
+        });}
 function featch_autorPage_Create_MusicPlayer(data) {
+    
     const autorPage_Div_Music_Content = document.querySelector(
         '.autorPage_Div_Music_Content'
     );
@@ -160,16 +193,29 @@ function featch_autorPage_Create_MusicPlayer(data) {
         '.autorPage_Div_Music_Content_MusicLIst'
     );
     
-    data.forEach((arr) => {
-        console.log(arr);
+    data.music.forEach((arr) => {
+        let like_Img = 'img/image8.png';
+ if(data.user){
+    console.log(arr._id)
+        const like_User= data.user.liker_songs+' '
+        console.log(like_User.includes(arr._id));
+    
+    if (like_User.includes(arr._id)){
+        console.log('true');
+        like_Img = 'img/image 8 (2).png';
+      }
+    
+ }
 
-        autorPage_Div_Music_Content_MusicLIst.innerHTML = `
+       
+
+        autorPage_Div_Music_Content_MusicLIst.innerHTML+= `
     <div class='autorPage_Div_Music_Li'>
         
         <button class='autorPage_Div_Music_Content_Music_Play_Button'>
-        <img class='autorPage_Div_Music_Content_Music_Play_Img' src='img/2ff977b7-2c90-41d5-813f-49170d570561.png' alt="" />
+        <img class='autorPage_Div_Music_Content_Music_Play_Img ' id="${arr.idpath}" src='img/2ff977b7-2c90-41d5-813f-49170d570561.png' alt="" />
         </button>
-        <button class='autorPage_Div_Music_Play_Button_Img_Songs'>
+        <button class='autorPage_Div_Music_Play_Button_Img_Songs'         >
         <img class='autorPage_Div_Music_Play_Img_Songs' src='${arr.img_autor}' alt="" />
         </button>
         <div calss="autorPage_Div_Music_Content_Music_Head_Music"> 
@@ -182,25 +228,20 @@ function featch_autorPage_Create_MusicPlayer(data) {
         <div></div>
         <p class='autorPage_Div_Music_Play_Like_Num'>${arr.like}</p>
         <button class='autorPage_Div_Music_Play_Like_Button'>
-        <img class='autorPage_Div_Music_Play_Like' id="${arr._id} " src='img/image8.png' alt="" />
+        <img class='autorPage_Div_Music_Play_Like' id="${arr._id} " src='${like_Img}' alt="" />
         </button>
         </div>
         </div>`;
+         
     });
- console.log(data +'afaf')
-    const autorPage_Div_Music_Play_Like = document.getElementsByClassName(
-        'autorPage_Div_Music_Play_Like'
-    );
-    for (var j = 0; j < autorPage_Div_Music_Play_Like.length; j++) {
-        autorPage_Div_Music_Play_Like[j].addEventListener(
-            'click',
-            function (event) {
-                var idlike = event.target.id;
-                console.log(idlike);
-            }
-        );
-    }
+   
+    
+ get_Like()
+ const autorPage_Div_Music_Content_Music_Play_Img=document.querySelectorAll('.autorPage_Div_Music_Content_Music_Play_Img')
+get_Id_Mass(autorPage_Div_Music_Content_Music_Play_Img,Button_Play_Music)
+
 }
+
 function featch_autorPage_Create_Autor(info) {
     const autors = info.autors[0];
     console.log(autors);
@@ -268,26 +309,118 @@ function autorPage_Img_SwitcheCase(event) {
         });
     });
 }
-
-function autorPage_Like_Function(id_Like) {
-    localStorage.getItem('time');
-    if (time - creatTime() >= 0) {
-        console.log('all good');
-    } else {
-        console.log('aaa');
-    }
-
-    // fetch('http://localhost:3000/auth/musiclike', {
-    //             method: 'POST',
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //             },
-    //             body: JSON.stringify({ like_id: id_Like }),
-    //         }).then(() => {
-
-    //             musicList.innerHTML = '';
-
-    //             getsongs();
-    //             return console.log('allgood');
-    //         });
+function get_Like(){
+    const autorPage_Div_Music_Play_Like = document.getElementsByClassName(
+  'autorPage_Div_Music_Play_Like'
+);
+for (var j = 0; j < autorPage_Div_Music_Play_Like.length; j++) {
+  autorPage_Div_Music_Play_Like[j].addEventListener(
+      'click',
+      function (event) {
+          var id_Like = event.target.id;
+          autorPage_Check_Authorization(() => autorPage_Like_Function(id_Like));
+          
+      }
+  );
 }
+}
+function autorPage_Like_Function(idlike) {
+   
+   const token=localStorage.getItem('token')
+   
+console.log(idlike)
+    fetch('https://project-49di.onrender.com/auth/musiclike', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({idlike:idlike,token:token}),
+            }).then(() => {
+
+                
+
+                autorPage_Check_Authorization(() => fetch_Get_Songs_For_Autor());
+                return console.log('all good');
+            });
+}
+let id_Play_Music
+function Button_Play_Music(id_Element){
+    
+    const audio_Src=audio.src
+    const audio_For_If = audio_Src.split('/').pop()
+   const id_Element_For_If= id_Element.split('\\').pop()
+  
+
+    if(id_Element_For_If!=audio_For_If){
+        if(id_Play_Music){
+            range_Audio.value=0
+       document.getElementById(id_Play_Music ).src='img/2ff977b7-2c90-41d5-813f-49170d570561.png'}
+       audio.src=id_Element 
+      
+    }
+       
+
+const autorPage_Div_Music_Play_Button_Img_Songs=document.querySelectorAll('.autorPage_Div_Music_Play_Button_Img_Songs')
+console.log(id_Element)
+id_Play_Music =id_Element
+checks_Play_Music(id_Element)
+}
+function get_Id_Mass(element,function_event){
+    element.forEach((element) => {
+        console.log()
+        element.addEventListener('click', (e) => {
+            const id_Element = e.target.id;
+            
+           function_event(id_Element)
+            
+        })
+}
+)}
+
+function checks_Play_Music(id_Element){
+  
+    if (audio.paused) {
+                    audio.play();
+                    document.getElementById(id_Play_Music).src='img/icons8-pause-30.png'
+                    img_Play_Music.src=' img/icons8-pause-30.png'
+                } else {
+                    audio.pause();
+                    document.getElementById(id_Play_Music ).src='img/2ff977b7-2c90-41d5-813f-49170d570561.png'
+                    img_Play_Music.src='img/2ff977b7-2c90-41d5-813f-49170d570561.png'
+                }
+}
+img_Play_Music.addEventListener('click',()=>{
+   const url=audio.src
+    const partAfterSymbol = url.split('/').pop()
+    console.log(partAfterSymbol)
+    if('null'==partAfterSymbol){
+        console.log('affaafaaaaaaaaaaaaaaaaaaaaaaa')
+   
+}else{
+     checks_Play_Music()
+}
+})
+
+// range_Audio.addEventListener('input', function() {
+//     const value = this.value; // Получаем значение положения ползунка
+  
+//     // Выполняем действия в зависимости от значения ползунка (например, изменяем громкость или скорость воспроизведения)
+//     // В этом примере мы будем изменять громкость звука
+//     audio.volume = value / 100; // Пример: устанавливаем громкость в зависимости от значения ползунка (от 0 до 1)
+  
+//     // Также можно использовать значение ползунка для управления другими аспектами аудио, например, currentTime для перемотки звука
+//     // audio.currentTime = value; // Пример: перематываем аудио в указанное место в секундах
+//   });
+audio.addEventListener('loadedmetadata', function() {
+    const duration = audio.duration; // Получаем общую продолжительность аудио в секундах
+    
+    range_Audio.setAttribute('max', duration); // Устанавливаем максимальное значение ползунка как общую продолжительность аудио
+    
+    range_Audio.addEventListener('input', function() {
+      const currentTime = this.value; // Получаем текущее значение временной позиции ползунка
+      
+      audio.currentTime = currentTime; // Устанавливаем текущее время аудио в соответствии с позицией ползунка
+    });
+  });
+  
+ 
