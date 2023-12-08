@@ -1,7 +1,9 @@
 const buttons_Switches = document.querySelectorAll('.menu_item');
 const main_Canvas = document.querySelector('.main');
-const range_Audio=document.querySelector('.range_Audio')
-const img_Play_Music=document.querySelector('.img_Play_Music')
+const range_Audio = document.querySelector('.range_Audio');
+const img_Play_Music = document.querySelector('.img_Play_Music');
+let data_Songs;
+let Id_Playing_Songs;
 function delete_QueryParam() {
     let currentUrl = window.location.href;
 
@@ -26,30 +28,29 @@ function create_QueryParam(queryParam, PagequeryParam) {
 
     history.pushState({}, '', newUrl.toString());
 }
-function autorPage_Check_Authorization(function_True){
-    const time= localStorage.getItem('time');
-console.log(now_Time())
+function autorPage_Check_Authorization(function_True) {
+    const time = localStorage.getItem('time');
+    console.log(now_Time());
     if (time - now_Time() >= 0) {
-        console.log('faf')
+        console.log('faf');
         function_True();
-        
     } else {
         console.log('aaa');
     }
 }
 function creatTime() {
     const now = new Date();
-    const date = now.getDate() +1 + '.' + now.getHours();
+    const date = now.getDate() + 1 + '.' + now.getHours();
     return date;
 }
 function now_Time() {
     const now = new Date();
-    let hour=now.getHours()
-    if( now.getHours().length<=10){
-        hour='0'+now.getHours()
-        console.log(hour)
+    let hour = now.getHours();
+    if (now.getHours().length <= 10) {
+        hour = '0' + now.getHours();
+        console.log(hour);
     }
-    const date = now.getDate()  + '.' + hour;
+    const date = now.getDate() + '.' + hour;
     return date;
 }
 buttons_Switches.forEach((button) => {
@@ -153,22 +154,21 @@ function autor() {
         .then((data) => {
             featch_autorPage_Create_Autor(data);
         });
-        fetch_Get_Songs_For_Autor()
-        
+    fetch_Get_Songs_For_Autor();
 }
-function fetch_Get_Songs_For_Autor(){
+function fetch_Get_Songs_For_Autor() {
     const urlkey = window.location.search;
-    const token=localStorage.getItem('token')
+    const token = localStorage.getItem('token');
 
     const url = new URLSearchParams(urlkey);
-   
+
     const autor = url.get('param');
     fetch('https://project-49di.onrender.com/auth/getsongsforautor', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ autor: autor, token:token }),
+        body: JSON.stringify({ autor: autor, token: token }),
     })
         .then((response) => {
             // Handle the response from the server
@@ -176,15 +176,16 @@ function fetch_Get_Songs_For_Autor(){
             return response.json();
         })
         .then((data) => {
-            console.log(data)
+            console.log(data);
             featch_autorPage_Create_MusicPlayer(data);
-        });}
+        });
+}
+
 function featch_autorPage_Create_MusicPlayer(data) {
-    
     const autorPage_Div_Music_Content = document.querySelector(
         '.autorPage_Div_Music_Content'
     );
-   
+
     autorPage_Div_Music_Content.innerHTML = `
     <div class='autorPage_Div_Music_Content_line'> </div>
     <div class='autorPage_Div_Music_Content_MusicLIst'></div>
@@ -192,24 +193,22 @@ function featch_autorPage_Create_MusicPlayer(data) {
     const autorPage_Div_Music_Content_MusicLIst = document.querySelector(
         '.autorPage_Div_Music_Content_MusicLIst'
     );
-    
+    data_Songs = data.music;
     data.music.forEach((arr) => {
         let like_Img = 'img/image8.png';
- if(data.user){
-    console.log(arr._id)
-        const like_User= data.user.liker_songs+' '
-        console.log(like_User.includes(arr._id));
-    
-    if (like_User.includes(arr._id)){
-        console.log('true');
-        like_Img = 'img/image 8 (2).png';
-      }
-    
- }
+        if (data.user) {
+            console.log(arr._id);
+            const like_User = data.user.liker_songs + ' ';
+            console.log(like_User.includes(arr._id));
 
-       
+            if (like_User.includes(arr._id)) {
+                console.log('true');
+                like_Img = 'img/image 8 (2).png';
+            }
+        }
 
-        autorPage_Div_Music_Content_MusicLIst.innerHTML+= `
+        Id_Playing_Songs = arr.idpath;
+        autorPage_Div_Music_Content_MusicLIst.innerHTML += `
     <div class='autorPage_Div_Music_Li'>
         
         <button class='autorPage_Div_Music_Content_Music_Play_Button'>
@@ -232,14 +231,68 @@ function featch_autorPage_Create_MusicPlayer(data) {
         </button>
         </div>
         </div>`;
-         
     });
-   
-    
- get_Like()
- const autorPage_Div_Music_Content_Music_Play_Img=document.querySelectorAll('.autorPage_Div_Music_Content_Music_Play_Img')
-get_Id_Mass(autorPage_Div_Music_Content_Music_Play_Img,Button_Play_Music)
 
+    get_Like();
+    const autorPage_Div_Music_Content_Music_Play_Img =
+        document.querySelectorAll(
+            '.autorPage_Div_Music_Content_Music_Play_Img'
+        );
+    get_Id_Mass(autorPage_Div_Music_Content_Music_Play_Img, Button_Play_Music);
+}
+function Function_Next_Music_For_Play_List() {
+    for (i = 0; i < data_Songs.length; i++) {
+        data = data_Songs[i].idpath;
+        if (data == Id_Playing_Songs) {
+            console.log('aaaa');
+
+            next_Song = i + 1;
+            console.log(data_Songs.length);
+
+            if (data_Songs.length == next_Song) {
+                document.getElementById(data_Songs[i].idpath).src =
+                    'img/2ff977b7-2c90-41d5-813f-49170d570561.png';
+                audio.src = '';
+                break;
+            } else {
+                id_Play_Music= data_Songs[next_Song].idpath
+                audio.src = data_Songs[next_Song].idpath;
+                audio.play();
+                document.getElementById(data_Songs[i].idpath).src =
+                    'img/2ff977b7-2c90-41d5-813f-49170d570561.png';
+                document.getElementById(data_Songs[next_Song].idpath).src =
+                    ' img/icons8-pause-30.png';
+                break;
+            }
+        }
+    }
+}
+function Function_Previous_Music_For_Play_List() {
+    for (i = 0; i < data_Songs.length; i++) {
+        data = data_Songs[i].idpath;
+        if (data == Id_Playing_Songs) {
+            console.log('aaaa');
+
+            next_Song = i - 1;
+            console.log(data_Songs.length);
+
+            if (0> next_Song) {
+                document.getElementById(data_Songs[i].idpath).src =
+                    'img/2ff977b7-2c90-41d5-813f-49170d570561.png';
+                audio.src = '';
+                break;
+            } else {
+                id_Play_Music= data_Songs[next_Song].idpath
+                audio.src = data_Songs[next_Song].idpath;
+                audio.play();
+                document.getElementById(data_Songs[i].idpath).src =
+                    'img/2ff977b7-2c90-41d5-813f-49170d570561.png';
+                document.getElementById(data_Songs[next_Song].idpath).src =
+                    ' img/icons8-pause-30.png';
+                break;
+            }
+        }
+    }
 }
 
 function featch_autorPage_Create_Autor(info) {
@@ -309,118 +362,129 @@ function autorPage_Img_SwitcheCase(event) {
         });
     });
 }
-function get_Like(){
+function get_Like() {
     const autorPage_Div_Music_Play_Like = document.getElementsByClassName(
-  'autorPage_Div_Music_Play_Like'
-);
-for (var j = 0; j < autorPage_Div_Music_Play_Like.length; j++) {
-  autorPage_Div_Music_Play_Like[j].addEventListener(
-      'click',
-      function (event) {
-          var id_Like = event.target.id;
-          autorPage_Check_Authorization(() => autorPage_Like_Function(id_Like));
-          
-      }
-  );
-}
+        'autorPage_Div_Music_Play_Like'
+    );
+    for (var j = 0; j < autorPage_Div_Music_Play_Like.length; j++) {
+        autorPage_Div_Music_Play_Like[j].addEventListener(
+            'click',
+            function (event) {
+                var id_Like = event.target.id;
+
+                autorPage_Check_Authorization(() =>
+                    autorPage_Like_Function(id_Like)
+                );
+            }
+        );
+    }
 }
 function autorPage_Like_Function(idlike) {
-   
-   const token=localStorage.getItem('token')
-   
-console.log(idlike)
+    const token = localStorage.getItem('token');
+
+    console.log(idlike);
     fetch('https://project-49di.onrender.com/auth/musiclike', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({idlike:idlike,token:token}),
-            }).then(() => {
-
-                
-
-                autorPage_Check_Authorization(() => fetch_Get_Songs_For_Autor());
-                return console.log('all good');
-            });
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ idlike: idlike, token: token }),
+    }).then(() => {
+        autorPage_Check_Authorization(() => fetch_Get_Songs_For_Autor());
+        return console.log('all good');
+    });
 }
-let id_Play_Music
-function Button_Play_Music(id_Element){
-    
-    const audio_Src=audio.src
-    const audio_For_If = audio_Src.split('/').pop()
-   const id_Element_For_If= id_Element.split('\\').pop()
-  
+let id_Play_Music;
+function Button_Play_Music(id_Element) {
+    const audio_Src = audio.src;
+    const audio_For_If = audio_Src.split('/').pop();
+    const id_Element_For_If = id_Element.split('\\').pop();
 
-    if(id_Element_For_If!=audio_For_If){
-        if(id_Play_Music){
-            range_Audio.value=0
-       document.getElementById(id_Play_Music ).src='img/2ff977b7-2c90-41d5-813f-49170d570561.png'}
-       audio.src=id_Element 
-      
+    if (id_Element_For_If != audio_For_If) {
+        if (id_Play_Music) {
+            range_Audio.value = 0;
+           
+
+            document.getElementById(id_Play_Music).src =
+                'img/2ff977b7-2c90-41d5-813f-49170d570561.png';
+        }
+        audio.src = id_Element;
     }
-       
 
-const autorPage_Div_Music_Play_Button_Img_Songs=document.querySelectorAll('.autorPage_Div_Music_Play_Button_Img_Songs')
-console.log(id_Element)
-id_Play_Music =id_Element
-checks_Play_Music(id_Element)
+    const autorPage_Div_Music_Play_Button_Img_Songs = document.querySelectorAll(
+        '.autorPage_Div_Music_Play_Button_Img_Songs'
+    );
+    console.log(id_Element);
+    id_Play_Music = id_Element;
+    checks_Play_Music(id_Element);
 }
-function get_Id_Mass(element,function_event){
+function get_Id_Mass(element, function_event) {
     element.forEach((element) => {
-        console.log()
+        console.log();
         element.addEventListener('click', (e) => {
             const id_Element = e.target.id;
-            
-           function_event(id_Element)
-            
-        })
+            Id_Playing_Songs = id_Element;
+            function_event(id_Element);
+        });
+    });
 }
-)}
-
-function checks_Play_Music(id_Element){
-  
-    if (audio.paused) {
-                    audio.play();
-                    document.getElementById(id_Play_Music).src='img/icons8-pause-30.png'
-                    img_Play_Music.src=' img/icons8-pause-30.png'
-                } else {
-                    audio.pause();
-                    document.getElementById(id_Play_Music ).src='img/2ff977b7-2c90-41d5-813f-49170d570561.png'
-                    img_Play_Music.src='img/2ff977b7-2c90-41d5-813f-49170d570561.png'
-                }
-}
-img_Play_Music.addEventListener('click',()=>{
-   const url=audio.src
-    const partAfterSymbol = url.split('/').pop()
-    console.log(partAfterSymbol)
-    if('null'==partAfterSymbol){
-        console.log('affaafaaaaaaaaaaaaaaaaaaaaaaa')
-   
-}else{
-     checks_Play_Music()
-}
+const previous_Song_Button=document.querySelector('.previous_Song_Button')
+const next_Song_Button=document.querySelector('.next_Song_Button')
+next_Song_Button.addEventListener('click',()=>{
+    Function_Next_Music_For_Play_List()
 })
+previous_Song_Button.addEventListener('click',()=>{
+    Function_Previous_Music_For_Play_List()
+})
+function checks_Play_Music(id_Element) {
+    if (audio.paused) {
+        audio.play();
+        document.getElementById(id_Play_Music).src = 'img/icons8-pause-30.png';
+        img_Play_Music.src = ' img/icons8-pause-30.png';
+    } else {
+        audio.pause();
+        document.getElementById(id_Play_Music).src =
+            'img/2ff977b7-2c90-41d5-813f-49170d570561.png';
+        img_Play_Music.src = 'img/2ff977b7-2c90-41d5-813f-49170d570561.png';
+    }
+}
+img_Play_Music.addEventListener('click', () => {
+    const url = audio.src;
+    const partAfterSymbol = url.split('/').pop();
+    console.log(partAfterSymbol);
+    if ('null' == partAfterSymbol) {
+        console.log('affaafaaaaaaaaaaaaaaaaaaaaaaa');
+    } else {
+        checks_Play_Music();
+    }
+});
 
 // range_Audio.addEventListener('input', function() {
 //     const value = this.value; // Получаем значение положения ползунка
-  
+
 //     // Выполняем действия в зависимости от значения ползунка (например, изменяем громкость или скорость воспроизведения)
 //     // В этом примере мы будем изменять громкость звука
 //     audio.volume = value / 100; // Пример: устанавливаем громкость в зависимости от значения ползунка (от 0 до 1)
-  
+
 //     // Также можно использовать значение ползунка для управления другими аспектами аудио, например, currentTime для перемотки звука
 //     // audio.currentTime = value; // Пример: перематываем аудио в указанное место в секундах
 //   });
-audio.addEventListener('loadedmetadata', function() {
+audio.addEventListener('loadedmetadata', function () {
     const duration = audio.duration; // Получаем общую продолжительность аудио в секундах
-    
+    console.log(duration);
     range_Audio.setAttribute('max', duration); // Устанавливаем максимальное значение ползунка как общую продолжительность аудио
-    
-    range_Audio.addEventListener('input', function() {
-      const currentTime = this.value; // Получаем текущее значение временной позиции ползунка
-      
-      audio.currentTime = currentTime; // Устанавливаем текущее время аудио в соответствии с позицией ползунка
+
+    range_Audio.addEventListener('input', function () {
+        const currentTime = this.value; // Получаем текущее значение временной позиции ползунка
+
+        audio.currentTime = currentTime; // Устанавливаем текущее время аудио в соответствии с позицией ползунка
     });
-  });
-  
- 
+    audio.addEventListener('timeupdate', function () {
+        const currentTime = audio.currentTime; // Получаем текущее время воспроизведения аудио
+
+        range_Audio.value = currentTime;
+        if (range_Audio.value >= duration - 2) {
+            Function_Next_Music_For_Play_List();
+        }
+    });
+});
