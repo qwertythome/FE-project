@@ -17,6 +17,7 @@ body {
         'a a c'
         'b f c';
 }
+
 .profile {
     width: 67px;
     height: 56px;
@@ -121,7 +122,12 @@ body {
 .play_Music {
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 10% 30%;
+    grid-template-rows: 10%  10% 60% 5%;
+    grid-template-areas:
+     'switch_Menu_Song_Img'
+    'img_Icon_Autorh_InPlayers'
+    'range_Audio'
+    'buttons_Players_Music';
     background: linear-gradient(
         180deg,
         rgba(0, 0, 0, 0.31) 130.68%,
@@ -437,8 +443,91 @@ body {
 }
 
 .range_Audio {
-    width: 280%;
+    
+    margin-left: -75%;
+    width: 250%;
     transform: rotate(90deg);
-    margin-left: -90%;
-    margin-top: 170%;
+    
+   grid-area:range_Audio ; 
+} 
+.buttons_Players_Music{
+    grid-area: buttons_Players_Music;
+    margin-top: 0;
+}
+.previous_Song_Button {
+ 
+    background: none;
+    border: 0;
+}
+.next_Song_Button {
+    background: none;
+    border: 0;
+}
+.switch_Menu_Song_Button{
+  
+   background: none;
+   border: 0;
+}
+.switch_Menu_Song_Img{
+    grid-area:switch_Menu_Song_Img ;
+    width: 40px;
+    height: 40px;
+}
+.next_Song_Img{
+    width: 30px;
+    height: 30px;
+}
+.previous_Song_Img{
+    width: 30px;
+    height: 30px;
+}
+.buttons_Players_Music{
+    grid-area: buttons_Players_Music;
+    display: flex;
+  margin-left: 0;
+}
+.body_Players_Music_Open{
+    grid-template-columns: 16% 42% ;
+}
+.img_Icon_Autorh_InPlayers{
+    
+}
+.play_Music_Open{
+    
+    display: grid;
+    grid-template-rows:10% 60% 10% 10%;
+    grid-template-columns:100% ;
+   grid-template-areas:
+     'switch_Menu_Song_Img'
+   'img_Icon_Autorh_InPlayers_Open'
+   'buttons_Players_Music'
+   ' range_Audio_Open'
+   ;
+   
+  
+}
+.switch_Menu_Song_Button_Open{
+    margin-top: 0px;
+
+}
+.range_Audio_Open{
+    margin-left: 5%;
+    transform: rotate(0deg);
+    margin-top: 0;
+    grid-area: range_Audio_Open;
+    width: 80%;
+    margin-left: 15%;
+}
+.img_Icon_Autorh_InPlayers_Open{
+  
+    background: rgb(0, 0, 0);
+   
+    grid-area: img_Icon_Autorh_InPlayers_Open;
+}
+.buttons_Players_Music_Open{
+    margin-left: 44%;
+}
+.img_Icon_Autorh_InPlayers_Img{
+    width: 125px;
+    height: 125px;
 }
