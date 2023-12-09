@@ -35,6 +35,18 @@ function autorPage_Check_Authorization(function_True) {
         console.log('faf');
         function_True();
     } else {
+        localStorage.removeItem('time')
+        console.log('aaa');
+    }
+}
+function check_Suaitability_token(){
+    const time = localStorage.getItem('time');
+    console.log(now_Time());
+    if (time - now_Time() >= 0) {
+       return localStorage.getItem('token')
+    } else {
+        localStorage.removeItem('time')
+        localStorage.removeItem('token')
         console.log('aaa');
     }
 }
@@ -168,7 +180,7 @@ function fetch_Get_Songs_For_Autor() {
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ autor: autor, token: token }),
+        body: JSON.stringify({ autor: autor, token: check_Suaitability_token() }),
     })
         .then((response) => {
             // Handle the response from the server
@@ -247,15 +259,16 @@ function Function_Next_Music_For_Play_List() {
             console.log('aaaa');
 
             next_Song = i + 1;
-            console.log(data_Songs.length);
+            console.log(' next_Song'+ next_Song);
 
-            if (data_Songs.length == next_Song) {
+            if (data_Songs.length+1 == next_Song) {
                 document.getElementById(data_Songs[i].idpath).src =
                     'img/2ff977b7-2c90-41d5-813f-49170d570561.png';
                 audio.src = '';
                 break;
             } else {
-                id_Play_Music= data_Songs[next_Song].idpath
+
+                Id_Playing_Songs= data_Songs[next_Song].idpath
                 audio.src = data_Songs[next_Song].idpath;
                 audio.play();
                 document.getElementById(data_Songs[i].idpath).src =
@@ -275,14 +288,16 @@ function Function_Previous_Music_For_Play_List() {
 
             next_Song = i - 1;
             console.log(data_Songs.length);
-
-            if (0> next_Song) {
+console.log(
+    next_Song
+)
+            if (-1> next_Song) {
                 document.getElementById(data_Songs[i].idpath).src =
                     'img/2ff977b7-2c90-41d5-813f-49170d570561.png';
                 audio.src = '';
                 break;
             } else {
-                id_Play_Music= data_Songs[next_Song].idpath
+                Id_Playing_Songs= data_Songs[next_Song].idpath
                 audio.src = data_Songs[next_Song].idpath;
                 audio.play();
                 document.getElementById(data_Songs[i].idpath).src =
