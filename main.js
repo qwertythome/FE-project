@@ -2,6 +2,7 @@ const buttons_Switches = document.querySelectorAll('.menu_item');
 const main_Canvas = document.querySelector('.main');
 const range_Audio = document.querySelector('.range_Audio');
 const img_Play_Music = document.querySelector('.img_Play_Music');
+
 let data_Songs;
 let Id_Playing_Songs;
 function delete_QueryParam() {
@@ -546,6 +547,7 @@ const img_Icon_Autorh_InPlayers = document.querySelector(
 
 click_Switch_Menu_Song_Button();
 function bild_switch_panel_players_music() {
+    const autorpage_head_author_content_text_info=document.querySelector('.autorPage_Head_Autor_Content_Text_info ')
     const player_music_songs_text=document.querySelector('.player_music_songs_text')
     const img_Icon_Autorh_InPlayers_Img=document.querySelector('.img_Icon_Autorh_InPlayers_Img')
     const autorPage_Head_Autor_Content_Img = document.querySelector(
@@ -554,6 +556,7 @@ function bild_switch_panel_players_music() {
     const buttons_Players_Music = document.querySelector(
         '.buttons_Players_Music'
     );
+    autorpage_head_author_content_text_info.classList.add('authorpage_head_author_content_text_info_open');
     body.classList.add('body_Players_Music_Open');
     play_Music.classList.add('play_Music_Open');
     range_Audio.classList.add('range_Audio_Open');
@@ -566,6 +569,7 @@ function bild_switch_panel_players_music() {
      img_Icon_Autorh_InPlayers_Img.classList.add('img_Icon_Autorh_InPlayers_Img_open')
 }
 function remove_switch_panel_players_music() {
+    const autorpage_head_author_content_text_info=document.querySelector('.autorPage_Head_Autor_Content_Text_info ')
     const player_music_songs_text=document.querySelector('.player_music_songs_text')
     const img_Icon_Autorh_InPlayers_Img=document.querySelector('.img_Icon_Autorh_InPlayers_Img')
     const autorPage_Head_Autor_Content_Img = document.querySelector(
@@ -582,6 +586,7 @@ function remove_switch_panel_players_music() {
     img_Icon_Autorh_InPlayers.classList.remove(
         'img_Icon_Autorh_InPlayers_Open'
     );
+    autorpage_head_author_content_text_info.classList.remove('authorpage_head_author_content_text_info_open')
     img_Icon_Autorh_InPlayers_Img.classList.remove('img_Icon_Autorh_InPlayers_Img_open')
     autorPage_Head_Autor_Content_Img.classList.remove(
         'autorPage_head_autor_Content_img_open'

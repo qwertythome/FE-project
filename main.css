@@ -12,7 +12,7 @@ body {
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template-columns: 22% 70% 8%;
+    grid-template-columns: 20% 71% 9%;
     grid-template-rows: 14% 86%;
     grid-template-areas:
         'a a c'
@@ -222,8 +222,8 @@ body {
 }
 
 .autorPage_Head_Autor_Content_Img_Main {
-    width: 90%;
-    height: 90%;
+    width: 75%;
+    height: 75%;
     flex-shrink: 0;
 
     border-radius: 50%;
@@ -238,8 +238,8 @@ body {
     flex-shrink: 0;
 }
 .autorPage_Head_Autor_Content_Music_Play_button {
-    width: 75px;
-    height: 85px;
+    width: 50px;
+    height: 50px;
     flex-shrink: 0;
     border-radius: 300px;
     border: 0px;
@@ -250,8 +250,8 @@ body {
     );
 }
 .autorPage_Head_Autor_Content_Music_Play_Img {
-    width: 45px;
-    height: 55.533px;
+    width: 75%;
+    height: 74%;
     flex-shrink: 0;
     grid-area: autorPage_Head_Autor_Content_Music_Play_Img;
 }
@@ -263,13 +263,13 @@ body {
 }
 .autorPage_Head_Autor_Content_Img_Center {
     border-radius: 250px;
-    width: 155%;
+    width: 105%;
     height: 40%;
     flex-shrink: 0;
     grid-area: autorPage_Head_Autor_Content_Img_Center;
 }
 .autorPage_Head_Autor_Content_Img_Rigth {
-    width: 125%;
+    width: 75%;
     height: 30%;
     flex-shrink: 0;
     border-radius: 200px;
@@ -277,7 +277,7 @@ body {
     margin-left: -40%;
 }
 .autorPage_Head_Autor_Content_Img_Left {
-    width: 125%;
+    width: 75%;
     height: 30%;
     flex-shrink: 0;
     grid-area: autorPage_Head_Autor_Content_Img_Left;
@@ -288,7 +288,7 @@ body {
 }
 .autorPage_Head_Autor_Content_Img {
     display: grid;
-    grid-template-columns: 75% 22%;
+    grid-template-columns: 70% 30%;
     grid-template-rows: 100%;
     height: 100%;
     width: 100%;
@@ -328,11 +328,15 @@ body {
     color: #ffc7c7;
     margin-top: 1%;
     font-family: Montserrat;
-    font-size: 105%;
+    font-size: 95%;
     font-style: normal;
+    margin-left: -5%;
     font-weight: 400;
     line-height: normal;
     grid-area: autorPage_Head_Autor_Content_Text_info;
+}
+.authorpage_head_author_content_text_info_open{
+    font-size: 80%;
 }
 .autorPage_Head_Autor_Content_Text {
     padding-top: 2%;
@@ -359,9 +363,9 @@ body {
     margin-top: 1%;
     display: grid;
     grid-template-rows: 100%;
-    height: 8%;
-    width: 90%;
-    margin-left: 0%;
+    height: 6%;
+    width: 85%;
+    margin-left: 5%;
     background: rgba(138, 51, 51, 0.3);
 }
 .autorPage_Div_Music_Content_MusicLIst {
@@ -381,18 +385,20 @@ body {
 .autorPage_Div_Music_Li {
     display: grid;
     grid-template-rows: 100%;
-    grid-template-columns: 8% 10% 10% 40% 20%;
-    height: 8vh;
+    grid-template-columns: 8% 6% 10% 40% 20%;
+    height: 7vh;
     padding-left: 0;
 }
 .autorPage_Div_Music_Play_Button_Img_Songs {
     background: none;
     border: 0;
+    margin-top: 6%;
 }
 .autorPage_Div_Music_Play_Img_Songs {
+   
     margin: 0%;
-    width: 55px;
-    height: 55px;
+    width: 45px;
+    height: 45px;
     flex-shrink: 0;
     border-radius: 50px;
     /* aspect-ratio: 1 / 1; */
@@ -404,7 +410,7 @@ body {
     color: #ffc7c7;
 
     font-family: Inter;
-    font-size: 150%;
+    font-size: 120%;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -417,11 +423,11 @@ body {
     color: #ffc7c7;
 
     font-family: Inter;
-    font-size: 15px;
+    font-size: 75%;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    margin-top: 2%;
+    margin-top: 1%;
     margin-left: 5%;
 }
 .autorPage_Div_Music_Play_Like_Button {
@@ -429,21 +435,22 @@ body {
     background: none;
 }
 .autorPage_Div_Music_Play_Like {
-    width: 31.33px;
-    height: 29px;
+    width: 75%;
+    height: 75%;
     flex-shrink: 0;
 }
 .autorPage_Div_Music_Play_Like_Num {
     color: #ffc7c7;
     margin-top: -10%;
     font-family: Inter;
-    font-size: 200%;
+    font-size: 150%;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
     width: 91.695px;
     height: 63px;
     flex-shrink: 0;
+    margin-left: 90%;
 }
 .autorPage_Div_Music_Play_Like_Div {
     display: grid;
@@ -495,10 +502,9 @@ body {
     margin-left: 0;
 }
 .body_Players_Music_Open {
-    grid-template-columns: 16% 42%;
+    grid-template-columns: 20% 42%;
    
 }
-
 .play_Music_Open {
     transition-duration: 0.5s; 
     display: grid;
