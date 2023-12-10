@@ -289,6 +289,10 @@ body {
     width: 100%;
     padding-left: 0;
 }
+.autorPage_head_autor_Content_img_open{
+    height:70%;
+    width: 100%;
+}
 .autorPage_Head_Autor_Content_Img_Slider {
     height: 100%;
     width: 90%;
@@ -301,13 +305,13 @@ body {
     flex-direction: column;
 }
 .autorPage_Head_Autor_Content_Text_title {
-    margin-left: 0;
+    margin-left: 6%;
     color: #ffc7c7;
 
     font-family: Montserrat;
-    font-size: 300%;
+    font-size: 250%;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 400px;
     line-height: normal;
     width: 178px;
     height: 66px;
@@ -319,7 +323,7 @@ body {
     color: #ffc7c7;
     margin-top: 1%;
     font-family: Montserrat;
-    font-size: 135%;
+    font-size: 105%;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -365,15 +369,15 @@ body {
     border: 0;
 }
 .autorPage_Div_Music_Content_Music_Play_Img {
-    width: 45.175px;
-    height: 45px;
+    width: 55%;
+    height: 45%;
     aspect-ratio: 1 / 1;
 }
 .autorPage_Div_Music_Li {
     display: grid;
     grid-template-rows: 100%;
-    grid-template-columns: 8% 6% 10% 50% 20%;
-
+    grid-template-columns: 8% 10% 10% 40% 20%;
+   height: 8vh;
     padding-left: 0;
 }
 .autorPage_Div_Music_Play_Button_Img_Songs {
@@ -382,8 +386,8 @@ body {
 }
 .autorPage_Div_Music_Play_Img_Songs {
     margin: 0%;
-    width: 62.526px;
-    height: 63px;
+    width: 55px;
+    height:55px;
     flex-shrink: 0;
     border-radius: 50px;
     /* aspect-ratio: 1 / 1; */
@@ -395,7 +399,7 @@ body {
     color: #ffc7c7;
 
     font-family: Inter;
-    font-size: 25px;
+    font-size: 150%;
     font-style: normal;
     font-weight: 400;
     line-height: normal;

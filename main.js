@@ -530,6 +530,7 @@ function click_Switch_Menu_Song_Button(){
 }
 click_Switch_Menu_Song_Button()
 function bild_Switch_Panel_Players_Music(){
+    const autorPage_Head_Autor_Content_Img=document.querySelector('.autorPage_Head_Autor_Content_Img')
     const buttons_Players_Music=document.querySelector('.buttons_Players_Music')
     const play_Music=document.querySelector('.play_Music')
     const body=document.querySelector('.body')
@@ -538,6 +539,7 @@ function bild_Switch_Panel_Players_Music(){
     body.classList.add('body_Players_Music_Open')
     play_Music.classList.add('play_Music_Open')
     range_Audio.classList.add('range_Audio_Open')
+    autorPage_Head_Autor_Content_Img.classList.add('autorPage_head_autor_Content_img_open')
     buttons_Players_Music.classList.add('buttons_Players_Music_Open')
     img_Icon_Autorh_InPlayers.classList.add('img_Icon_Autorh_InPlayers_Open')
 }
