@@ -1,21 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <link rel="stylesheet" href="regist.css" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-    </head>
-    <body>
-        <div class="background">
-            <form class="regist">
-            <input type="text" class="input_Style name" />
-            <input type="text" class="input_Style email" />
-            <input type="text" class="input_Style password" />
-            <input type="text" class="input_Style check_Password"/>
-            <button type="submit" class="button"></button>
-        </form>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="regist.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <img class="image" src="./img/backgroundRegister.png" alt="">
+    <div class="duck">
+        <div class="duckimg"></div>
+        <h1 class="ducktext">Duckmusic</h1>
+    </div>
+
+
+    <div class="main">
+
+        <div class="regist">
+            <div class="inner">
+                <div class="regist_name">
+                    <div>
+                        <h2 class="registtext">Регістрація</h2>
+                        <hr class="registline" />
+                    </div>
+                </div>
+                <input type="text" class="input_Style name" placeholder="Ім'я" />
+                <hr class="line" />
+                <input type="text" class="input_Style email" placeholder="Електрона почта" />
+                <hr class="line" />
+                <input type="text" class="input_Style password" placeholder="Пароль" />
+                <hr class="line" />
+                <input type="text" class="input_Style check_Password" placeholder="Підтвердити пароль " />
+                <hr class="line" />
+
+            </div>
+
+
+            <hr class="bottomLine" />
+            <div class="inner">
+                <button type="submit" class="button">Підтвердити</button>
+            </div>
         </div>
-    </body>
+    </div>
+
+</body>
+
 </html>
