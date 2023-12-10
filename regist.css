@@ -54,6 +54,7 @@ background: linear-gradient(180deg, rgba(58, 2, 53, 0.80) 0%, rgba(58, 2, 53, 0.
 .line{
   position: relative;
   bottom: 2px;
+  left:13px;
   background:#FFC7C7;
   width: 440px;
 }
@@ -77,8 +78,8 @@ background: linear-gradient(180deg, rgba(58, 2, 53, 0.80) 0%, rgba(58, 2, 53, 0.
   flex-direction: column;
   align-items: center;
 }
-.registname{
-margin-bottom:40px;
+.regist_name{
+margin-bottom:10px;
   width: 469px;
   height: 63px;
 }
