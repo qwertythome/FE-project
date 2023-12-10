@@ -253,7 +253,7 @@ function featch_autorPage_Create_MusicPlayer(data) {
     get_Id_Mass(autorPage_Div_Music_Content_Music_Play_Img, Button_Play_Music);
 }
 function Function_Next_Music_For_Play_List() {
-    for (i = 0; i < data_Songs.length; i++) {
+    for (let i = 0; i < data_Songs.length; i++) {
         data = data_Songs[i].idpath;
         if (data == Id_Playing_Songs) {
             console.log('aaaa');
@@ -473,7 +473,7 @@ function checks_Play_Music(id_Element) {
     }
 }
 function authorths_Page_Img_Icon(){
-    for (i = 0; i < data_Songs.length; i++) {
+    for (let i = 0; i < data_Songs.length; i++) {
         data = data_Songs[i].idpath;
         if (data == Id_Playing_Songs) {
 
