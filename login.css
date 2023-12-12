@@ -1,0 +1,13 @@
+body{
+height: 100vh;
+
+}
+*{
+    margin: auto;
+}
+.test{
+    width: 100%;
+     height: 100%;
+     background: linear-gradient(0deg, black 0%, black 100%),
+     linear-gradient(180deg, #8A3333 0%, rgba(210.37, 113.08, 200.31, 0.06) 100%, rgba(138, 51, 129, 0) 100%);
+}
