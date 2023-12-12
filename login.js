@@ -1,3 +1,4 @@
+
 const loginForm = document.getElementById('loginForm');
 function creatTime(){
     const now = new Date();
@@ -46,7 +47,7 @@ loginForm.addEventListener('submit', async (event) => {
     .then(data => {
       localStorage.setItem('token',data.token)
       
-     localStorage.setItem('time',creatTime() );
+     localStorage.setItem('time',creatTime() )()
      if( localStorage.getItem('token')>=0){
 
      }
