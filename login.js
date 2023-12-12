@@ -40,10 +40,9 @@ loginForm.addEventListener('submit', async (event) => {
         body: JSON.stringify(data),
         credentials: 'include',
    
-
+    }
     // Отправляем запрос на сервер
-    fetch('http://localhost:3000/auth/login', options)
-    .then(response => response.json())
+    fetch('http://localhost:3000/auth/login' ,options).then(response => response.json())
     .then(data => {
       localStorage.setItem('token',data.token)
       
