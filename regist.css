@@ -3,6 +3,10 @@
   margin: 0;
   padding: 0;
 }
+body{
+  background:url("./img/backgroundRegister.png")  no-repeat center center fixed;
+  background-size: cover;
+}
 .main{
 
 height: 100vh;
@@ -35,11 +39,6 @@ border: 0px;
 border-radius: 15px;
 background: linear-gradient(180deg, rgba(58, 2, 53, 0.80) 0%, rgba(58, 2, 53, 0.28) 99.99%, rgba(58, 2, 53, 0.00) 100%), rgba(0, 0, 0, 0.20);
 
-} 
-.image{
-  position: absolute;
-  width:100vw;
-  height: 100vh;
 } 
 .button{
   position: relative;

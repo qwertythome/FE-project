@@ -8,14 +8,10 @@ body{
     background:url("./img/backgroundRegister.png") no-repeat center center fixed;
     background-size: cover;
 }
-.account{
-    
-}
   .main{
-  
   height: 100vh;
   width: 100vw;
-    position: absolute;
+  position: absolute;
   display: flex;
   flex-direction: column;
   align-self: center;
