@@ -227,7 +227,7 @@ body {
     flex-shrink: 0;
 
     border-radius: 50%;
-    background: url(<path-to-image>), lightgray 50% / cover no-repeat;
+    background:  lightgray 50% / cover no-repeat;
 }
 .autorPage_Head_Autor_Content {
     height: 37%;

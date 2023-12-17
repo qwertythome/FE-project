@@ -2,7 +2,8 @@ const buttons_Switches = document.querySelectorAll('.menu_item');
 const main_Canvas = document.querySelector('.main');
 const range_Audio = document.querySelector('.range_Audio');
 const img_Play_Music = document.querySelector('.img_Play_Music');
-
+import './main.css'
+// import './img/be5f82b1-5932-4a8c-89f0-5e66843d09bb.png'
 let data_Songs;
 let Id_Playing_Songs;
 function delete_QueryParam() {
@@ -211,7 +212,7 @@ function featch_autorPage_Create_MusicPlayer(data) {
     );
     data_Songs = data.music;
     data.music.forEach((arr) => {
-        let like_Img = '../img/image8.png';
+        let like_Img = './img/image8.png';
         if (data.user) {
             console.log(arr._id);
             const like_User = data.user.liker_songs + ' ';
@@ -219,7 +220,7 @@ function featch_autorPage_Create_MusicPlayer(data) {
 
             if (like_User.includes(arr._id)) {
                 console.log('true');
-                like_Img = '../img/image 8 (2).png';
+                like_Img = './img/image 8 (2).png';
             }
         }
 
@@ -228,7 +229,7 @@ function featch_autorPage_Create_MusicPlayer(data) {
     <div class='autorPage_Div_Music_Li'>
         
         <button class='autorPage_Div_Music_Content_Music_Play_Button'>
-        <img class='autorPage_Div_Music_Content_Music_Play_Img ' id="${arr.idpath}" src='../img/2ff977b7-2c90-41d5-813f-49170d570561.png' alt="" />
+        <img class='autorPage_Div_Music_Content_Music_Play_Img ' id="${arr.idpath}" src='img/2ff977b7-2c90-41d5-813f-49170d570561.png' alt="" />
         </button>
         <button class='autorPage_Div_Music_Play_Button_Img_Songs'         >
         <img class='autorPage_Div_Music_Play_Img_Songs' src='${arr.img_autor}' alt="" />
@@ -258,16 +259,16 @@ function featch_autorPage_Create_MusicPlayer(data) {
 }
 function Function_Next_Music_For_Play_List() {
     for (let i = 0; i < data_Songs.length; i++) {
-        data = data_Songs[i].idpath;
-        if (data == Id_Playing_Songs) {
+      
+        if (data_Songs[i].idpath == Id_Playing_Songs) {
             console.log('aaaa');
 
-            next_Song = i + 1;
+            let next_Song =1 +i  ;
             console.log(' next_Song' + next_Song);
 
             if (data_Songs.length + 1 == next_Song) {
                 document.getElementById(data_Songs[i].idpath).src =
-                    '../img/2ff977b7-2c90-41d5-813f-49170d570561.png';
+                    './img/2ff977b7-2c90-41d5-813f-49170d570561.png';
                 audio.pause();
                 break;
             } else {
@@ -277,9 +278,9 @@ function Function_Next_Music_For_Play_List() {
                 img_Icon_Autorh_InPlayers_Img.src =
                     data_Songs[next_Song].img_autor;
                 document.getElementById(data_Songs[i].idpath).src =
-                    '../img/2ff977b7-2c90-41d5-813f-49170d570561.png';
+                    './img/2ff977b7-2c90-41d5-813f-49170d570561.png';
                 document.getElementById(data_Songs[next_Song].idpath).src =
-                    ' ../img/icons8-pause-30.png';
+                    './img/icons8-pause-30.png';
                 break;
             }
         }
@@ -287,17 +288,17 @@ function Function_Next_Music_For_Play_List() {
 }
 
 function Function_Previous_Music_For_Play_List() {
-    for (i = 0; i < data_Songs.length; i++) {
-        data = data_Songs[i].idpath;
+    for (let i = 0; i < data_Songs.length; i++) {
+        let data = data_Songs[i].idpath;
         if (data == Id_Playing_Songs) {
             console.log('aaaa');
 
-            next_Song = i - 1;
+           let next_Song = i - 1;
             console.log(data_Songs.length);
             console.log(next_Song);
             if (-1 > next_Song) {
                 document.getElementById(data_Songs[i].idpath).src =
-                    '../img/2ff977b7-2c90-41d5-813f-49170d570561.png';
+                    'img/2ff977b7-2c90-41d5-813f-49170d570561.png';
                 audio.pause();
                 break;
             } else {
@@ -307,9 +308,9 @@ function Function_Previous_Music_For_Play_List() {
                 img_Icon_Autorh_InPlayers_Img.src =
                     data_Songs[next_Song].img_autor;
                 document.getElementById(data_Songs[i].idpath).src =
-                    '../img/2ff977b7-2c90-41d5-813f-49170d570561.png';
+                    'img/2ff977b7-2c90-41d5-813f-49170d570561.png';
                 document.getElementById(data_Songs[next_Song].idpath).src =
-                    ' ../img/icons8-pause-30.png';
+                    ' img/icons8-pause-30.png';
                 break;
             }
         }
@@ -337,7 +338,7 @@ function featch_autorPage_Create_Autor(info) {
     </div>
     <div class='autorPage_Head_Autor_Content_Text'>
     <button class='autorPage_Head_Autor_Content_Music_Play_button'>
-        <img class='autorPage_Head_Autor_Content_Music_Play_Img' src='../img/2ff977b7-2c90-41d5-813f-49170d570561.png' alt="" />
+        <img class='autorPage_Head_Autor_Content_Music_Play_Img' src='img/2ff977b7-2c90-41d5-813f-49170d570561.png' alt="" />
         </button>
 
     <p class='autorPage_Head_Autor_Content_Text_title'> ${autors.autor}</p>
@@ -428,7 +429,7 @@ function Button_Play_Music(id_Element) {
             range_Audio.value = 0;
 
             document.getElementById(Id_Playing_Songs).src =
-                '../img/2ff977b7-2c90-41d5-813f-49170d570561.png';
+                'img/2ff977b7-2c90-41d5-813f-49170d570561.png';
         }
         audio.src = id_Element;
     }
@@ -465,19 +466,19 @@ function checks_Play_Music(id_Element) {
         audio.play();
         authorths_Page_Img_Icon();
         document.getElementById(Id_Playing_Songs).src =
-            '../img/icons8-pause-30.png';
-        img_Play_Music.src = ' ../img/icons8-pause-30.png';
+            'img/icons8-pause-30.png';
+        img_Play_Music.src = ' img/icons8-pause-30.png';
     } else {
         audio.pause();
         document.getElementById(Id_Playing_Songs).src =
-            '../img/2ff977b7-2c90-41d5-813f-49170d570561.png';
-        img_Play_Music.src = '../img/2ff977b7-2c90-41d5-813f-49170d570561.png';
+            'img/2ff977b7-2c90-41d5-813f-49170d570561.png';
+        img_Play_Music.src = 'img/2ff977b7-2c90-41d5-813f-49170d570561.png';
     }
 }
 function authorths_Page_Img_Icon() {
     for (let i = 0; i < data_Songs.length; i++) {
-        data = data_Songs[i].idpath;
-        if (data == Id_Playing_Songs) {
+       
+        if (data_Songs[i].idpath == Id_Playing_Songs) {
             img_Icon_Autorh_InPlayers_Img.src = data_Songs[i].img_autor;
         }
     }
@@ -592,4 +593,3 @@ function remove_switch_panel_players_music() {
         'autorPage_head_autor_Content_img_open'
     );
 }
-import test from "./test";
