@@ -1,0 +1,115 @@
+
+*{
+  margin: 0;
+  padding: 0;
+}
+body{
+  background:url("./img/backgroundRegister.png")  no-repeat center center fixed;
+  background-size: cover;
+}
+.main{
+
+height: 100vh;
+width: 100vw;
+  position: absolute;
+display: flex;
+flex-direction: column;
+align-self: center;
+align-items: center;
+justify-content: center;
+  
+}
+.regist{
+height:100vh;
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+::placeholder {
+  position: relative;
+  left:10px;
+  color: #FFC7C7;
+}
+.input_Style{
+  color: #FFC7C7;
+  width: 469px;
+height: 63px;
+flex-shrink: 0;
+border: 0px;
+border-radius: 15px;
+background: linear-gradient(180deg, rgba(58, 2, 53, 0.80) 0%, rgba(58, 2, 53, 0.28) 99.99%, rgba(58, 2, 53, 0.00) 100%), rgba(0, 0, 0, 0.20);
+
+} 
+.button{
+  position: relative;
+  top:90px;
+  border-radius: 5px;
+  background: #8A3333;
+  color: #FFC7C7;
+  border: none;
+  width: 150px;
+  height: 40px;
+}
+.line{
+  position: relative;
+  bottom: 22px;
+  left:13px;
+  background:#FFC7C7;
+  width: 440px;
+}
+.bottomLine{
+  position: relative;
+  top:60px;
+  background:#FFC7C7;
+  width: 540px;
+}
+.registtext{
+
+  color: #FFC7C7;
+}
+input{
+  margin-bottom:20px;
+}
+.registline{
+  
+  background:#FFC7C7;
+  width:125px;
+}
+.inner{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.regist_name{
+margin-bottom:10px;
+  width: 469px;
+  height: 63px;
+}
+.acount{
+  color: #FFC7C7;
+  text-decoration: none;
+
+}
+.acount:hover{
+  text-decoration: underline;
+}
+.duck{
+  display: flex;
+  flex-direction:row;
+}
+.top{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin:10px;
+}
+.ducktext{
+  color: #FFC7C7;
+}
+.duckimg{
+width: 50px;
+height:40px;
+  border-radius:100%;
+  background-color:#45063B;
+}
